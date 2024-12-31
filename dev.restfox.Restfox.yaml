@@ -30,8 +30,8 @@ modules:
         path: dev.restfox.Restfox.metainfo.xml
       - type: file
         dest-filename: restfox.deb
-        sha256: afde81c7a92e17ea68708b6184a498aa396e7758f5dfb69bef7abf4b67ab8655
-        url: https://github.com/flawiddsouza/Restfox/releases/download/v0.33.0/restfox_0.33.0_amd64.deb
+        sha256: 1cc9bebaf184dafdc76a5922ed46ead990a4cd056f37895c325cfb8857a47fe9
+        url: https://github.com/flawiddsouza/Restfox/releases/download/v0.34.0/restfox_0.34.0_amd64.deb
         x-checker-data:
           is-main-source: true
           type: json
