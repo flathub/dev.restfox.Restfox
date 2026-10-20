@@ -1,11 +1,11 @@
 app-id: dev.restfox.Restfox
 base: org.electronjs.Electron2.BaseApp
-base-version: '24.08'
+base-version: '26.08'
 command: restfox
 rename-desktop-file: restfox.desktop
 rename-icon: dev.restfox.Restfox
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 separate-locales: false
 finish-args:
@@ -30,8 +30,8 @@ modules:
         path: dev.restfox.Restfox.metainfo.xml
       - type: file
         dest-filename: restfox.deb
-        sha256: ce96c16ad7c686690134323e18e625a537584e415e6f6ca3fd8f957309f3b2ec
-        url: https://github.com/flawiddsouza/Restfox/releases/download/v0.40.0/restfox_0.40.0_amd64.deb
+        sha256: c3385eeab0c497881b8e063705b05ab4d91ba73111e5e75e9dfcfb357b26688d
+        url: https://github.com/flawiddsouza/Restfox/releases/download/v0.41.0/restfox_0.41.0_amd64.deb
         x-checker-data:
           is-main-source: true
           type: json
