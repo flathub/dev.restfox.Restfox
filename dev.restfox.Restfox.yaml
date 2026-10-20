@@ -1,11 +1,11 @@
 app-id: dev.restfox.Restfox
 base: org.electronjs.Electron2.BaseApp
-base-version: '24.08'
+base-version: '26.08'
 command: restfox
 rename-desktop-file: restfox.desktop
 rename-icon: dev.restfox.Restfox
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 separate-locales: false
 finish-args:
