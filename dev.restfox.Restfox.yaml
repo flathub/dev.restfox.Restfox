@@ -10,10 +10,12 @@ sdk: org.freedesktop.Sdk
 separate-locales: false
 finish-args:
   - --device=dri
+  - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
   - --filesystem=home
   - --share=ipc
   - --share=network
-  - --socket=x11
+  - --socket=fallback-x11
+  - --socket=wayland
 modules:
   - name: restfox
     build-commands:
@@ -41,5 +43,17 @@ modules:
       - type: script
         commands:
           - export TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
+          - '# Electron picks Wayland only when XDG_SESSION_TYPE is wayland, which can'
+          - '# disagree with the one display the sandbox received, so name that one.'
+          - '# WAYLAND_DISPLAY stays set without the socket, so check the socket.'
+          - case "${WAYLAND_DISPLAY:-wayland-0}" in
+          - '  /*) wayland_socket="${WAYLAND_DISPLAY}" ;;'
+          - '  *) wayland_socket="${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY:-wayland-0}" ;;'
+          - esac
+          - if [ -S "$wayland_socket" ] && [ -z "$DISPLAY" ]; then
+          - '  set -- --ozone-platform=wayland "$@"'
+          - elif [ -n "$DISPLAY" ] && [ ! -S "$wayland_socket" ]; then
+          - '  set -- --ozone-platform=x11 "$@"'
+          - fi
           - exec zypak-wrapper /app/lib/restfox/Restfox "$@"
         dest-filename: entrypoint.sh
